@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mis Favoritos - Biblioteca Pública "Juan José Arreola"</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f7f7f7; }
+        header { background:#4a3f2f; padding:20px; color:white; display:flex; justify-content:space-between; align-items:center; }
+        
+        /* --- ESTILOS DEL MENÚ DESPLEGABLE (Dropdown) --- */
+        nav { display: flex; align-items: center; gap: 10px; } 
+        .main-nav-link { 
+            color: white; 
+            text-decoration: none; 
+            font-weight: bold; 
+            padding: 10px 5px; 
+            display: block;
+            margin: 0 10px;
+        }
+        .main-nav-link:hover { text-decoration: underline; }
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content {
+            display: none; 
+            position: absolute;
+            background-color: #383025; 
+            min-width: 170px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
+            z-index: 10; 
+            top: 100%; 
+            left: 0;
+        }
+        .dropdown-content a {
+            color: white;
+            padding: 10px 16px;
+            text-decoration: none;
+            display: block;
+            font-weight: normal; 
+            white-space: nowrap; 
+            margin: 0;
+        }
+        .dropdown-content a:hover {
+            background-color: #5d5140; 
+            text-decoration: none;
+        }
+        .dropdown:hover .dropdown-content { display: block; }
+        /* --- FIN ESTILOS MENÚ DESPLEGABLE --- */
+
+        /* Estilos generales de la página */
+        .logo { font-size:22px; font-weight:bold; }
+        section { padding:40px; max-width:1100px; margin:auto; } 
+        h1 { color:#4a3f2f; margin-bottom: 30px; }
+
+        /* --- ESTILOS DE LA BARRA DE BÚSQUEDA/FILTROS --- */
+        #filtros-favoritos {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        #filtros-favoritos label {
+            font-weight: bold;
+            color: #4a3f2f;
+            white-space: nowrap;
+        }
+        #filtros-favoritos select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            min-width: 150px;
+        }
+        
+        /* Estilos de los Productos (Ejemplares) */
+        .productos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .producto-card {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+        }
+        .producto-card h3 {
+            color: #4a3f2f;
+            font-size: 1.1em;
+            height: 40px; 
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+        .producto-card .autor {
+            color: #777;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .producto-card .cover {
+            height: 180px;
+            width: 100%;
+            background-color: #f0f0f0; 
+            border-radius: 4px;
+            margin-bottom: 15px;
+            line-height: 180px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+        .etiqueta {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            background: #e91e63; /* Rojo/Rosa para Favoritos */
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.75em;
+            font-weight: bold;
+        }
+        .tipo-ejemplar {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .tipo-prestamo {
+            background: #28a745; 
+            color: white;
+        }
+        .tipo-venta {
+            background: #007bff; 
+            color: white;
+        }
+        .acciones-favoritos button {
+            background: #dc3545; /* Botón de eliminar */
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+        .acciones-favoritos button:hover {
+            background: #c82333;
+        }
+        .acciones-favoritos .secondary {
+            background: #4a3f2f;
+            margin-bottom: 5px;
+        }
+        .acciones-favoritos .secondary:hover {
+            background: #5d5140;
+        }
+        .callout {
+            background: #e3f2fd;
+            color: #1976d2;
+            border-left: 5px solid #2196f3;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Biblioteca Pública "Juan José Arreola"</div>
+        <nav>
+            <a href="index.html" class="main-nav-link">Inicio</a>
+            
+            <div class="dropdown">
+                <a href="#" class="main-nav-link">Nosotros</a>
+                <div class="dropdown-content">
+                    <a href="acercade.html">Acerca de Nosotros</a>
+                    <a href="blogs.html">Blogs</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <a href="#" class="main-nav-link">Catálogo</a>
+                <div class="dropdown-content">
+                    <a href="categoria.html">Categorías</a>
+                    <a href="genero.html">Género</a>
+                    <a href="autores.html">Autor</a>
+                    <a href="editorial.html">Editorial</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <a href="#" class="main-nav-link">Servicios</a>
+                <div class="dropdown-content">
+                    <a href="prestamos.html">Préstamo</a>
+                    <a href="venta.html">Ejemplares en Venta</a>
+                    <a href="favoritos.html">Favoritos</a>
+                    <a href="carrito.html">Mi Carrito</a>
+                </div>
+            </div>
+            
+            <div class="dropdown">
+                <a href="#" class="main-nav-link">Registro</a>
+                <div class="dropdown-content">
+                    <a href="Registro.html">Crear Cuenta</a>
+                    <a href="Registro_Iniciar.html">Iniciar Sesión</a>
+                </div>
+            </div>
+
+            <a href="Sucursal.html" class="main-nav-link">Sucursal</a>
+        </nav>
+    </header>
+
+    <section id="favoritos">
+        <h1>Mis Ejemplares Favoritos</h1>
+        
+        <div class="callout">
+            <p>Aquí se muestran todos los títulos que has guardado. Puedes filtrarlos por el tipo de servicio que ofrecen.</p>
+        </div>
+
+        <form id="filtros-favoritos">
+            <label for="tipo_favorito">Mostrar por tipo de servicio:</label>
+            <select id="tipo_favorito" name="tipo_favorito">
+                <option value="todos">Todos los favoritos</option>
+                <option value="prestamo">Disponibles para Préstamo</option>
+                <option value="venta">Disponibles para Venta</option>
+            </select>
+        </form>
+        
+        <div class="productos-grid">
+            
+            <div class="producto-card">
+                <span class="etiqueta">Favorito</span>
+                <div class="cover">Portada de Libro</div>
+                <h3>Rayuela</h3>
+                <span class="autor">Julio Cortázar</span>
+                <span class="tipo-ejemplar tipo-prestamo">Préstamo (Disponible)</span>
+                <div class="acciones-favoritos">
+                    <button class="secondary">Añadir a Préstamo</button>
+                    <button>Eliminar de Favoritos</button>
+                </div>
+            </div>
+
+            <div class="producto-card">
+                <span class="etiqueta">Favorito</span>
+                <div class="cover">Portada de Libro</div>
+                <h3>Sapiens: De animales a dioses</h3>
+                <span class="autor">Yuval Noah Harari</span>
+                <span class="tipo-ejemplar tipo-venta">Venta ($250 MXN)</span>
+                <div class="acciones-favoritos">
+                    <button class="secondary">Añadir al Carrito</button>
+                    <button>Eliminar de Favoritos</button>
+                </div>
+            </div>
+
+            <div class="producto-card">
+                <span class="etiqueta">Favorito</span>
+                <div class="cover">Portada de Libro</div>
+                <h3>1984</h3>
+                <span class="autor">George Orwell</span>
+                <span class="tipo-ejemplar tipo-prestamo">Préstamo (En Espera)</span>
+                <div class="acciones-favoritos">
+                    <button class="secondary">Reservar Ejemplar</button>
+                    <button>Eliminar de Favoritos</button>
+                </div>
+            </div>
+
+            <div class="producto-card">
+                <span class="etiqueta">Favorito</span>
+                <div class="cover">Portada de Libro</div>
+                <h3>El Laberinto de la Soledad</h3>
+                <span class="autor">Octavio Paz</span>
+                <span class="tipo-ejemplar tipo-venta">Venta ($180 MXN)</span>
+                <div class="acciones-favoritos">
+                    <button class="secondary">Añadir al Carrito</button>
+                    <button>Eliminar de Favoritos</button>
+                </div>
+            </div>
+            
+            <div class="producto-card">
+                <span class="etiqueta">Favorito</span>
+                <div class="cover">Portada de Libro</div>
+                <h3>La Odisea</h3>
+                <span class="autor">Homero</span>
+                <span class="tipo-ejemplar tipo-prestamo">Préstamo (Disponible)</span>
+                <div class="acciones-favoritos">
+                    <button class="secondary">Añadir a Préstamo</button>
+                    <button>Eliminar de Favoritos</button>
+                </div>
+            </div>
+            
+        </div>
+        
+    </section>
+
+</body>
+</html>

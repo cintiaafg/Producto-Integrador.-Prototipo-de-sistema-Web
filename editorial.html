@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nosotros - Biblioteca Pública "Juan José Arreola"</title>
+    <title>Editoriales - Biblioteca Pública "Juan José Arreola"</title>
     <style>
         body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f7f7f7; }
         header { background:#4a3f2f; padding:20px; color:white; display:flex; justify-content:space-between; align-items:center; }
         
+        /* --- ESTILOS DEL MENÚ DESPLEGABLE (Dropdown) --- */
         nav { display: flex; align-items: center; gap: 10px; } 
-        
-      
         .main-nav-link { 
             color: white; 
             text-decoration: none; 
@@ -19,17 +18,8 @@
             display: block;
             margin: 0 10px;
         }
-        .main-nav-link:hover { 
-            text-decoration: underline; 
-        }
-
-        
-        .dropdown {
-            position: relative; 
-            display: inline-block;
-        }
-
-        
+        .main-nav-link:hover { text-decoration: underline; }
+        .dropdown { position: relative; display: inline-block; }
         .dropdown-content {
             display: none; 
             position: absolute;
@@ -40,8 +30,6 @@
             top: 100%; 
             left: 0;
         }
-
-        
         .dropdown-content a {
             color: white;
             padding: 10px 16px;
@@ -49,57 +37,66 @@
             display: block;
             font-weight: normal; 
             white-space: nowrap; 
-            margin: 0; 
+            margin: 0;
         }
-
         .dropdown-content a:hover {
             background-color: #5d5140; 
             text-decoration: none;
         }
-
-    
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
+        .dropdown:hover .dropdown-content { display: block; }
         /* --- FIN ESTILOS MENÚ DESPLEGABLE --- */
 
-
-      
+        /* Estilos generales de la página */
         .logo { font-size:22px; font-weight:bold; }
-        section { padding:40px; max-width:900px; margin:auto; }
-        h1 { color:#4a3f2f; margin-bottom: 25px;}
-        h2 { color:#4a3f2f; border-bottom: 2px solid #ccc; padding-bottom: 5px; margin-top: 30px; }
+        section { padding:40px; max-width:900px; margin:auto; } 
+        h1 { color:#4a3f2f; margin-bottom: 30px; }
         
-      
-        .info-card {
-            background: white;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-left: 5px solid #4a3f2f;
-            border-radius: 4px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-        .mision-vision-container {
-            display: flex;
-            gap: 20px;
+        /* Estilos específicos de Editoriales */
+        .editoriales-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
             margin-top: 20px;
         }
-        .mision-vision-container div {
-            flex: 1;
-            padding: 15px;
-            border: 1px dashed #4a3f2f;
-            background: #fdfcf9;
-            border-radius: 5px;
+        .editorial-card {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 6px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: box-shadow 0.3s;
         }
-        .mision-vision-container h3 {
+        .editorial-card:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .editorial-card h2 {
+            margin: 5px 0 10px 0;
+            font-size: 1.2em;
             color: #4a3f2f;
-            margin-top: 0;
+        }
+        .editorial-card p {
+            color: #777;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+        .editorial-card a {
+            background: #4a3f2f;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+        }
+        .editorial-card a:hover {
+            background: #5d5140;
         }
     </style>
 </head>
 <body>
     <header>
-          <div class="logo">Biblioteca Pública "Juan José Arreola"</div>
+        <div class="logo">Biblioteca Pública "Juan José Arreola"</div>
         <nav>
             <a href="index.html" class="main-nav-link">Inicio</a>
             
@@ -143,33 +140,50 @@
         </nav>
     </header>
 
-    <section id="nosotros">
-        <h1>Acerca de la Biblioteca "Juan José Arreola"</h1>
+    <section id="editoriales">
+        <h1>Directorio de Editoriales</h1>
         
-        <div class="info-card">
-            <h2>Nuestra Historia</h2>
-            <p>La Biblioteca Pública "Juan José Arreola" fue fundada en 1985 con la misión de ser un faro cultural en la comunidad. Nombrada en honor al ilustre escritor mexicano, nuestra institución ha crecido hasta convertirse en un centro vital de conocimiento, aprendizaje y encuentro cívico. Desde su inauguración, hemos ampliado continuamente nuestra colección y adaptado nuestros servicios para satisfacer las necesidades de una sociedad en constante cambio.</p>
-            <p>Celebramos más de tres décadas de servicio ininterrumpido, fomentando la lectura y el acceso a la información para todas las edades.</p>
-        </div>
+        <p>Encuentra libros de tus casas editoriales favoritas y descubre su colección completa.</p>
 
-        <div class="mision-vision-container">
-            <div>
-                <h3>Misión</h3>
-                <p>Ofrecer acceso libre y equitativo a la información, la cultura y el conocimiento, promoviendo el desarrollo intelectual y la participación comunitaria a través de colecciones y programas de alta calidad.</p>
+        <div class="editoriales-grid">
+            
+            <div class="editorial-card">
+                <h2>Editorial Siglo XXI</h2>
+                <p>Especializada en ciencias sociales, economía y filosofía latinoamericana.</p>
+                <a href="#sigloxxi">Ver títulos</a>
             </div>
-            <div>
-                <h3>Visión</h3>
-                <p>Ser reconocida como la principal institución cultural y educativa de la región, un centro innovador que inspira el aprendizaje permanente y enriquece la vida de cada miembro de nuestra comunidad.</p>
-            </div>
-        </div>
 
-        <h2>Nuestros Valores</h2>
-        <ul>
-            <li><strong>Inclusión:</strong> Servir a toda la comunidad sin distinción.</li>
-            <li><strong>Excelencia:</strong> Mantener la calidad en nuestros servicios y colecciones.</li>
-            <li><strong>Aprendizaje:</strong> Fomentar la curiosidad y la educación continua.</li>
-            <li><strong>Comunidad:</strong> Ser un espacio seguro y acogedor para el encuentro.</li>
-        </ul>
+            <div class="editorial-card">
+                <h2>Planeta</h2>
+                <p>Amplio catálogo de ficción, autoayuda y best-sellers internacionales.</p>
+                <a href="#planeta">Ver títulos</a>
+            </div>
+
+            <div class="editorial-card">
+                <h2>Fondo de Cultura Económica (FCE)</h2>
+                <p>Destacada por su colección de literatura, historia y obras de divulgación.</p>
+                <a href="#fce">Ver títulos</a>
+            </div>
+
+            <div class="editorial-card">
+                <h2>Ediciones Era</h2>
+                <p>Enfocada en la crítica, el ensayo político y la literatura contemporánea.</p>
+                <a href="#era">Ver títulos</a>
+            </div>
+            
+            <div class="editorial-card">
+                <h2>Anagrama</h2>
+                <p>Editorial independiente con énfasis en la narrativa europea moderna.</p>
+                <a href="#anagrama">Ver títulos</a>
+            </div>
+
+            <div class="editorial-card">
+                <h2>Taurus</h2>
+                <p>Especializada en libros de no-ficción de alto rigor intelectual.</p>
+                <a href="#taurus">Ver títulos</a>
+            </div>
+            
+        </div>
         
     </section>
 

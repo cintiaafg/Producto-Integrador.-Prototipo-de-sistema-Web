@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Registro - Biblioteca Pública "Juan José Arreola"</title>
+    <title>Categorías - Biblioteca Pública "Juan José Arreola"</title>
     <style>
         body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f7f7f7; }
         header { background:#4a3f2f; padding:20px; color:white; display:flex; justify-content:space-between; align-items:center; }
@@ -48,62 +48,50 @@
 
         /* Estilos generales de la página */
         .logo { font-size:22px; font-weight:bold; }
-        section { padding:40px; max-width:900px; margin:auto; }
-        h1 { color:#4a3f2f; }
+        section { padding:40px; max-width:1000px; margin:auto; } /* Mayor ancho para las categorías */
+        h1 { color:#4a3f2f; margin-bottom: 30px; }
 
-        /* Estilos específicos del formulario de registro */
-        form {
+        /* Estilos específicos de Categorías */
+        .categorias-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 3 columnas en escritorio */
+            gap: 30px;
+        }
+        .categoria-card {
             background: white;
-            padding: 30px;
             border-radius: 8px;
+            padding: 25px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            max-width: 450px;
-            margin-top: 20px;
+            transition: transform 0.3s;
         }
-        label {
+        .categoria-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+        .categoria-card h2 {
+            color: #4a3f2f;
+            margin-top: 0;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 5px;
+            font-size: 1.3em;
+        }
+        .categoria-card p {
+            color: #666;
+            font-size: 0.95em;
+        }
+        .categoria-card a {
+            color: #4a3f2f;
             font-weight: bold;
-            color: #4a3f2f;
-            display: block;
-            margin-bottom: 5px;
-        }
-        input[type="text"], input[type="email"] {
-            width: 95%; 
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        button[type="submit"] {
-            background-color: #4a3f2f;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        button[type="submit"]:hover {
-            background-color: #5d5140;
-        }
-        .link-alternativo {
-            display: block;
-            margin-top: 15px;
-            font-size: 0.9em;
-            text-align: center;
-        }
-        .link-alternativo a {
-            color: #4a3f2f;
             text-decoration: none;
-            font-weight: bold;
         }
-        .link-alternativo a:hover {
+        .categoria-card a:hover {
             text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="logo">Biblioteca Pública "Juan José Arreola"</div>
+       <div class="logo">Biblioteca Pública "Juan José Arreola"</div>
         <nav>
             <a href="index.html" class="main-nav-link">Inicio</a>
             
@@ -147,21 +135,52 @@
         </nav>
     </header>
 
-    <section id="registro">
-        <h1>Crear Cuenta</h1>
-        <p>Regístrate para obtener tu credencial de usuario y acceder a todos los servicios de la biblioteca.</p>
-        <form>
-            <label for="nombre">Nombre completo:</label>
-            <input type="text" id="nombre" name="nombre" required><br>
+    <section id="categorias">
+        <h1>Explora nuestro Catálogo por Categoría</h1>
+        
+        <p>Utiliza esta sección para navegar a través de las áreas temáticas que cubren nuestra colección.</p>
+
+        <div class="categorias-grid">
             
-            <label for="correo">Correo electrónico:</label>
-            <input type="email" id="correo" name="correo" required><br>
-            
-            <button type="submit">Enviar registro</button>
-            <div class="link-alternativo">
-                ¿Ya tienes una cuenta? <a href="Registro_Iniciar.html">Inicia Sesión aquí.</a>
+            <div class="categoria-card">
+                <h2>Literatura y Ficción</h2>
+                <p>Novelas, cuentos cortos, poesía y drama de autores clásicos y contemporáneos. Incluye géneros como ciencia ficción, fantasía y misterio.</p>
+                <a href="#literatura">Ver 1,500 títulos</a>
             </div>
-        </form>
+
+            <div class="categoria-card">
+                <h2>Ciencias Sociales y Humanidades</h2>
+                <p>Historia, filosofía, sociología, psicología y ciencias políticas. Recursos esenciales para el estudio e investigación académica.</p>
+                <a href="#sociales">Ver 980 títulos</a>
+            </div>
+
+            <div class="categoria-card">
+                <h2>Ciencias Exactas y Tecnología</h2>
+                <p>Matemáticas, física, química, biología, ingeniería y programación. Lo último en desarrollo científico y tecnológico.</p>
+                <a href="#ciencias">Ver 720 títulos</a>
+            </div>
+
+            <div class="categoria-card">
+                <h2>Arte y Cultura</h2>
+                <p>Libros sobre bellas artes, música, cine, arquitectura, fotografía y diseño. Explora la creatividad humana en todas sus formas.</p>
+                <a href="#arte">Ver 550 títulos</a>
+            </div>
+            
+            <div class="categoria-card">
+                <h2>Referencia y Enciclopedias</h2>
+                <p>Diccionarios, atlas, manuales y guías generales. Herramientas rápidas y confiables para consulta e información.</p>
+                <a href="#referencia">Ver 300 títulos</a>
+            </div>
+
+            <div class="categoria-card">
+                <h2>Infantil y Juvenil</h2>
+                <p>Cuentos ilustrados, libros educativos y novelas dirigidas a niños y adolescentes. Fomentando la lectura desde temprana edad.</p>
+                <a href="#infantil">Ver 1,100 títulos</a>
+            </div>
+            
+        </div>
+        
     </section>
+
 </body>
 </html>

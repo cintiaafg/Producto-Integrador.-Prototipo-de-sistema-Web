@@ -1,30 +1,198 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-      <style>
-    body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f7f7f7; }
-    header { background:#4a3f2f; padding:20px; color:white; display:flex; justify-content:space-between; align-items:center; }
-    nav a { color:white; text-decoration:none; margin:0 15px; font-weight:bold; }
-    nav a:hover { text-decoration:underline; }
-    .logo { font-size:22px; font-weight:bold; }
-    section { padding:40px; max-width:900px; margin:auto; }
-    h1 { color:#4a3f2f; }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sucursal - Biblioteca Pública "Juan José Arreola"</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f7f7f7; }
+        header { background:#4a3f2f; padding:20px; color:white; display:flex; justify-content:space-between; align-items:center; }
+        
+        /* --- ESTILOS DEL MENÚ DESPLEGABLE (Dropdown) --- */
+        nav { display: flex; align-items: center; gap: 10px; } 
+        .main-nav-link { 
+            color: white; 
+            text-decoration: none; 
+            font-weight: bold; 
+            padding: 10px 5px; 
+            display: block;
+            margin: 0 10px;
+        }
+        .main-nav-link:hover { text-decoration: underline; }
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content {
+            display: none; 
+            position: absolute;
+            background-color: #383025; 
+            min-width: 170px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
+            z-index: 10; 
+            top: 100%; 
+            left: 0;
+        }
+        .dropdown-content a {
+            color: white;
+            padding: 10px 16px;
+            text-decoration: none;
+            display: block;
+            font-weight: normal; 
+            white-space: nowrap; 
+            margin: 0;
+        }
+        .dropdown-content a:hover {
+            background-color: #5d5140; 
+            text-decoration: none;
+        }
+        .dropdown:hover .dropdown-content { display: block; }
+        /* --- FIN ESTILOS MENÚ DESPLEGABLE --- */
+
+        /* Estilos generales de la página */
+        .logo { font-size:22px; font-weight:bold; }
+        section { padding:40px; max-width:900px; margin:auto; } 
+        h1 { color:#4a3f2f; margin-bottom: 30px; }
+
+        /* Contenedor de la información */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        /* Estilo de las tarjetas de información */
+        .info-card {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .info-card h2 {
+            color: #4a3f2f;
+            border-bottom: 3px solid #f7f7f7;
+            padding-bottom: 10px;
+            margin-top: 0;
+            font-size: 1.4em;
+        }
+        .info-card p, .info-card li {
+            font-size: 1em;
+            color: #333;
+            line-height: 1.6;
+        }
+        .info-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .info-card ul li {
+            margin-bottom: 10px;
+            border-bottom: 1px dashed #eee;
+            padding-bottom: 5px;
+        }
+        .info-card strong {
+            color: #4a3f2f;
+            margin-right: 5px;
+        }
+
+        /* Estilo para la ubicación */
+        .ubicacion-mapa {
+            background: #e0e0e0;
+            height: 350px;
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+    </style>
 </head>
 <body>
-      <header>
-    <div class="logo">Biblioteca Pública "Juan José Arreola"</div>
-    <nav>
-        <a href="index.html">Inicio</a>
-      <a href="Inicio.html">Nosotros</a>
-      <a href="Catalogo.html">Catálogo</a>
-      <a href="Servicios.html">Servicios</a>
-      <a href="Registro.html">Registro</a>
-      <a href="Sucursal.html">Sucursal</a>
-    </nav>
-  </header>
+    <header>
+       <div class="logo">Biblioteca Pública "Juan José Arreola"</div>
+        <nav>
+            <a href="index.html" class="main-nav-link">Inicio</a>
+            
+            <div class="dropdown">
+                <a href="#" class="main-nav-link">Nosotros</a>
+                <div class="dropdown-content">
+                    <a href="acercade.html">Acerca de Nosotros</a>
+                    <a href="blogs.html">Blogs</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <a href="#" class="main-nav-link">Catálogo</a>
+                <div class="dropdown-content">
+                    <a href="categoria.html">Categorías</a>
+                    <a href="genero.html">Género</a>
+                    <a href="autores.html">Autor</a>
+                    <a href="editorial.html">Editorial</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <a href="#" class="main-nav-link">Servicios</a>
+                <div class="dropdown-content">
+                    <a href="prestamos.html">Préstamo</a>
+                    <a href="venta.html">Ejemplares en Venta</a>
+                    <a href="favoritos.html">Favoritos</a>
+                    <a href="carrito.html">Mi Carrito</a>
+                </div>
+            </div>
+            
+            <div class="dropdown">
+                <a href="#" class="main-nav-link">Registro</a>
+                <div class="dropdown-content">
+                    <a href="Registro.html">Crear Cuenta</a>
+                    <a href="Registro_Iniciar.html">Iniciar Sesión</a>
+                </div>
+            </div>
+
+            <a href="Sucursal.html" class="main-nav-link">Sucursal</a>
+        </nav>
+    </header>
+
+    <section id="sucursal">
+        <h1>Nuestra Sucursal Principal</h1>
+        <p>A continuación, se muestra la ubicación de la Biblioteca Pública del Estado de Jalisco "Juan José Arreola", así como nuestros horarios y medios de contacto.</p>
+        
+        <div class="ubicacion-mapa">
+            </div>
+
+        <div class="info-grid">
+            
+            <div class="info-card">
+                <h2>Horarios de Atención ⏰</h2>
+                <p>Nuestros horarios están diseñados para ofrecerte flexibilidad durante toda la semana:</p>
+                <ul>
+                    <li><strong>Lunes a Jueves:</strong> 9:00 a 20:00</li>
+                    <li><strong>Viernes:</strong> 9:00 a 20:00</li>
+                    <li><strong>Sábado:</strong> 9:00 a 17:00</li>
+                    <li><strong>Domingo:</strong> 9:00 a 15:00</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h2>Medios de Contacto 📞</h2>
+                <p>Comunícate con nosotros para consultas, información sobre servicios y eventos:</p>
+                <ul>
+                    <li><strong>Teléfono:</strong> <a href="tel:+523338364530">+52 33 3836 4530</a></li>
+                    <li><strong>Correo Electrónico:</strong> <a href="mailto:contacto@bibliotecaarreola.org">contacto@bibliotecaarreola.org</a> (simulado)</li>
+                    <li><strong>Sitio Web:</strong> <a href="http://www.bpej.udg.mx/">www.bpej.udg.mx/</a></li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h2>Dirección Postal 🗺️</h2>
+                <p>Visítanos en nuestra ubicación en Zapopan, Jalisco:</p>
+                <p>
+                    **Biblioteca Pública del Estado de Jalisco "Juan José Arreola"**<br>
+                    Periférico Norte Manuel Gómez Morín, C. Prol. Belenes # 1695,<br>
+                    Rinconada de La Azalea, 45180 Zapopan, Jal.
+                </p>
+                <a href="https://maps.google.com/?cid=9689026449739839880&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ" target="_blank">Ver en Google Maps</a>
+            </div>
+            
+        </div>
+        
+    </section>
+
 </body>
 </html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Préstamo - Biblioteca Pública "Juan José Arreola"</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f7f7f7; }
+        header { background:#4a3f2f; padding:20px; color:white; display:flex; justify-content:space-between; align-items:center; }
+        
+        /* --- ESTILOS DEL MENÚ DESPLEGABLE (Dropdown) --- */
+        nav { display: flex; align-items: center; gap: 10px; } 
+        .main-nav-link { 
+            color: white; 
+            text-decoration: none; 
+            font-weight: bold; 
+            padding: 10px 5px; 
+            display: block;
+            margin: 0 10px;
+        }
+        .main-nav-link:hover { text-decoration: underline; }
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content {
+            display: none; 
+            position: absolute;
+            background-color: #383025; 
+            min-width: 170px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
+            z-index: 10; 
+            top: 100%; 
+            left: 0;
+        }
+        .dropdown-content a {
+            color: white;
+            padding: 10px 16px;
+            text-decoration: none;
+            display: block;
+            font-weight: normal; 
+            white-space: nowrap; 
+            margin: 0;
+        }
+        .dropdown-content a:hover {
+            background-color: #5d5140; 
+            text-decoration: none;
+        }
+        .dropdown:hover .dropdown-content { display: block; }
+        /* --- FIN ESTILOS MENÚ DESPLEGABLE --- */
+
+        /* Estilos generales de la página */
+        .logo { font-size:22px; font-weight:bold; }
+        section { padding:40px; max-width:1100px; margin:auto; } 
+        h1 { color:#4a3f2f; margin-bottom: 30px; }
+
+        /* --- ESTILOS DE LA BARRA DE BÚSQUEDA --- */
+        #filtros-busqueda {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        #filtros-busqueda label {
+            font-weight: bold;
+            color: #4a3f2f;
+            white-space: nowrap;
+        }
+        #filtros-busqueda input[type="text"], 
+        #filtros-busqueda select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            flex-grow: 1;
+            min-width: 150px;
+        }
+        #filtros-busqueda button {
+            background-color: #4a3f2f;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        #filtros-busqueda button:hover {
+            background-color: #5d5140;
+        }
+
+        /* Estilos de los Productos (Ejemplares) */
+        .productos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .producto-card {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .producto-card h3 {
+            color: #4a3f2f;
+            font-size: 1.1em;
+            height: 40px; 
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+        .producto-card .autor {
+            color: #777;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .producto-card .cover {
+            height: 180px;
+            width: 100%;
+            background-color: #ccc; 
+            border-radius: 4px;
+            margin-bottom: 15px;
+            line-height: 180px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+        .estado {
+            display: inline-block;
+            background: #28a745; 
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        .add-to-loan {
+            background: #4a3f2f;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .add-to-loan:hover {
+            background: #5d5140;
+        }
+        .callout {
+            background: #fff8e1;
+            color: #795548;
+            border-left: 5px solid #ffb300;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Biblioteca Pública "Juan José Arreola"</div>
+        <nav>
+            <a href="index.html" class="main-nav-link">Inicio</a>
+            
+            <div class="dropdown">
+                <a href="#" class="main-nav-link">Nosotros</a>
+                <div class="dropdown-content">
+                    <a href="acercade.html">Acerca de Nosotros</a>
+                    <a href="blogs.html">Blogs</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <a href="#" class="main-nav-link">Catálogo</a>
+                <div class="dropdown-content">
+                    <a href="categoria.html">Categorías</a>
+                    <a href="genero.html">Género</a>
+                    <a href="autores.html">Autor</a>
+                    <a href="editorial.html">Editorial</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <a href="#" class="main-nav-link">Servicios</a>
+                <div class="dropdown-content">
+                    <a href="prestamos.html">Préstamo</a>
+                    <a href="venta.html">Ejemplares en Venta</a>
+                    <a href="favoritos.html">Favoritos</a>
+                    <a href="carrito.html">Mi Carrito</a>
+                </div>
+            </div>
+            
+            <div class="dropdown">
+                <a href="#" class="main-nav-link">Registro</a>
+                <div class="dropdown-content">
+                    <a href="Registro.html">Crear Cuenta</a>
+                    <a href="Registro_Iniciar.html">Iniciar Sesión</a>
+                </div>
+            </div>
+
+            <a href="Sucursal.html" class="main-nav-link">Sucursal</a>
+        </nav>
+    </header>
+
+    <section id="prestamo">
+        <h1>Catálogo para Préstamo a Domicilio</h1>
+        
+        <div class="callout">
+            <p><strong>Recuerda:</strong> Solo los usuarios con credencial activa pueden realizar préstamos. Puedes seleccionar hasta 5 ejemplares por un periodo de 15 días.</p>
+        </div>
+
+        <form id="filtros-busqueda">
+            <label for="buscar">Buscar título/autor:</label>
+            <input type="text" id="buscar" name="buscar" placeholder="Ej. Cien años de soledad o Márquez">
+            
+            <label for="categoria">Categoría:</label>
+            <select id="categoria" name="categoria">
+                <option value="">Todas</option>
+                <option value="ficcion">Ficción Literaria</option>
+                <option value="ciencias">Ciencias</option>
+                <option value="historia">Historia</option>
+                <option value="infantil">Infantil</option>
+            </select>
+            
+            <label for="autor">Autor:</label>
+            <select id="autor" name="autor">
+                <option value="">Todos</option>
+                <option value="garcia_marquez">García Márquez, G.</option>
+                <option value="wulf">Wulf, A.</option>
+                <option value="harari">Harari, Y.N.</option>
+            </select>
+            
+            <button type="submit">Buscar</button>
+        </form>
+        
+        <div class="productos-grid">
+            
+            <div class="producto-card">
+                <div class="cover">Portada de Libro</div>
+                <h3>Cien años de soledad</h3>
+                <span class="autor">Gabriel García Márquez</span>
+                <span class="estado">Disponible</span>
+                <button class="add-to-loan">Añadir a Préstamo</button>
+            </div>
+
+            <div class="producto-card">
+                <div class="cover">Portada de Libro</div>
+                <h3>La invención de la naturaleza</h3>
+                <span class="autor">Andrea Wulf</span>
+                <span class="estado">Disponible</span>
+                <button class="add-to-loan">Añadir a Préstamo</button>
+            </div>
+
+            <div class="producto-card">
+                <div class="cover">Portada de Libro</div>
+                <h3>21 lecciones para el siglo XXI</h3>
+                <span class="autor">Yuval Noah Harari</span>
+                <span class="estado">Disponible</span>
+                <button class="add-to-loan">Añadir a Préstamo</button>
+            </div>
+
+            <div class="producto-card">
+                <div class="cover">Portada de Libro</div>
+                <h3>El Quijote de la Mancha</h3>
+                <span class="autor">Miguel de Cervantes</span>
+                <span class="estado">Disponible</span>
+                <button class="add-to-loan">Añadir a Préstamo</button>
+            </div>
+            
+            <div class="producto-card">
+                <div class="cover">Portada de Libro</div>
+                <h3>Breve historia del tiempo</h3>
+                <span class="autor">Stephen Hawking</span>
+                <span class="estado">Disponible</span>
+                <button class="add-to-loan">Añadir a Préstamo</button>
+            </div>
+            
+            <div class="producto-card">
+                <div class="cover">Portada de Libro</div>
+                <h3>Pedro Páramo</h3>
+                <span class="autor">Juan Rulfo</span>
+                <span class="estado">Disponible</span>
+                <button class="add-to-loan">Añadir a Préstamo</button>
+            </div>
+
+        </div>
+        
+    </section>
+
+</body>
+</html>

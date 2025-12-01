@@ -1,34 +1,218 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Biblioteca Pública “Juan José Arreola”</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f7f7f7; }
-    header { background:#4a3f2f; padding:20px; color:white; display:flex; justify-content:space-between; align-items:center; }
-    nav a { color:white; text-decoration:none; margin:0 15px; font-weight:bold; }
-    nav a:hover { text-decoration:underline; }
-    .logo { font-size:22px; font-weight:bold; }
-    section { padding:40px; max-width:900px; margin:auto; }
-    h1, h2 { color:#4a3f2f; }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blogs - Biblioteca Pública "Juan José Arreola"</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f7f7f7; }
+        header { background:#4a3f2f; padding:20px; color:white; display:flex; justify-content:space-between; align-items:center; }
+        
+        /* --- ESTILOS DEL MENÚ DESPLEGABLE (Dropdown) --- */
+        nav { display: flex; align-items: center; gap: 10px; } 
+        .main-nav-link { 
+            color: white; 
+            text-decoration: none; 
+            font-weight: bold; 
+            padding: 10px 5px; 
+            display: block;
+            margin: 0 10px;
+        }
+        .main-nav-link:hover { text-decoration: underline; }
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content {
+            display: none; 
+            position: absolute;
+            background-color: #383025; 
+            min-width: 170px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
+            z-index: 10; 
+            top: 100%; 
+            left: 0;
+        }
+        .dropdown-content a {
+            color: white;
+            padding: 10px 16px;
+            text-decoration: none;
+            display: block;
+            font-weight: normal; 
+            white-space: nowrap; 
+            margin: 0;
+        }
+        .dropdown-content a:hover {
+            background-color: #5d5140; 
+            text-decoration: none;
+        }
+        .dropdown:hover .dropdown-content { display: block; }
+        /* --- FIN ESTILOS MENÚ DESPLEGABLE --- */
+
+        /* Estilos generales de la página */
+        .logo { font-size:22px; font-weight:bold; }
+        section { padding:40px; max-width:900px; margin:auto; }
+        h1 { color:#4a3f2f; margin-bottom: 30px; }
+
+        /* Estilos específicos del Blog */
+        .blog-post {
+            background: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+        }
+        .blog-post h2 {
+            color: #4a3f2f;
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+        .blog-meta {
+            color: #777;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            border-bottom: 1px dashed #eee;
+            padding-bottom: 10px;
+        }
+        .blog-summary {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .read-more {
+            background: #4a3f2f;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+        }
+        .read-more:hover {
+            background: #5d5140;
+        }
+
+        /* Estilos de Paginación */
+        .pagination {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .pagination a {
+            color: #4a3f2f;
+            padding: 8px 12px;
+            text-decoration: none;
+            border: 1px solid #ddd;
+            margin: 0 4px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .pagination a.active {
+            background-color: #4a3f2f;
+            color: white;
+            border: 1px solid #4a3f2f;
+        }
+        .pagination a:hover:not(.active) {
+            background-color: #e0e0e0;
+        }
+    </style>
 </head>
 <body>
     <header>
-    <div class="logo">Biblioteca Pública "Juan José Arreola"</div>
-    </header>
-  <section id="blogs">
-    <h1>Blogs</h1>
-    <p>En esta sección podrás encontrar artículos, noticias y publicaciones que fomentan la lectura, difunden actividades culturales y fortalecen la comunidad bibliotecaria.</p>
+        <div class="logo">Biblioteca Pública "Juan José Arreola"</div>
+        <nav>
+            <a href="index.html" class="main-nav-link">Inicio</a>
+            
+            <div class="dropdown">
+                <a href="#" class="main-nav-link">Nosotros</a>
+                <div class="dropdown-content">
+                    <a href="acercade.html">Acerca de Nosotros</a>
+                    <a href="blogs.html">Blogs</a>
+                </div>
+            </div>
 
-    <h2>Últimas publicaciones</h2>
-    <ul>
-      <li><strong>Recomendaciones de lectura para jóvenes:</strong> Descubre nuevas historias que están inspirando a lectores de todas las edades.</li>
-      <li><strong>Crónica del taller de escritura creativa:</strong> Un recorrido por las actividades más destacadas del último mes.</li>
-      <li><strong>La importancia de las bibliotecas públicas:</strong> Un análisis del papel social de estos espacios en las comunidades modernas.</li>
-    </ul>
-  </section>
-  <a href="Inicio.html">Regresar</a>
+            <div class="dropdown">
+                <a href="#" class="main-nav-link">Catálogo</a>
+                <div class="dropdown-content">
+                    <a href="categoria.html">Categorías</a>
+                    <a href="genero.html">Género</a>
+                    <a href="autores.html">Autor</a>
+                    <a href="editorial.html">Editorial</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <a href="#" class="main-nav-link">Servicios</a>
+                <div class="dropdown-content">
+                    <a href="prestamos.html">Préstamo</a>
+                    <a href="venta.html">Ejemplares en Venta</a>
+                    <a href="favoritos.html">Favoritos</a>
+                    <a href="carrito.html">Mi Carrito</a>
+                </div>
+            </div>
+            
+            <div class="dropdown">
+                <a href="#" class="main-nav-link">Registro</a>
+                <div class="dropdown-content">
+                    <a href="Registro.html">Crear Cuenta</a>
+                    <a href="Registro_Iniciar.html">Iniciar Sesión</a>
+                </div>
+            </div>
+
+            <a href="Sucursal.html" class="main-nav-link">Sucursal</a>
+        </nav>
+    </header>
+
+    <section id="blogs">
+        <h1>Blog de la Biblioteca</h1>
+        
+        <!-- Post 1 -->
+        <div class="blog-post">
+            <h2>El impacto de la lectura en el desarrollo infantil</h2>
+            <div class="blog-meta">Publicado por María G., 15 de Octubre de 2024 | Categoría: Educación</div>
+            <p class="blog-summary">Exploramos cómo los libros y las historias tempranas moldean la mente de los niños, mejorando su vocabulario y estimulando su imaginación. La biblioteca ofrece talleres gratuitos...</p>
+            <a href="#post1" class="read-more">Leer más</a>
+        </div>
+
+        <!-- Post 2 -->
+        <div class="blog-post">
+            <h2>Diez joyas literarias que debes descubrir este año</h2>
+            <div class="blog-meta">Publicado por Javier R., 1 de Noviembre de 2024 | Categoría: Recomendaciones</div>
+            <p class="blog-summary">Una selección curada por nuestro equipo de bibliotecarios. Desde clásicos olvidados hasta las últimas novedades del realismo mágico latinoamericano...</p>
+            <a href="#post2" class="read-more">Leer más</a>
+        </div>
+        
+        <!-- Post 3 -->
+        <div class="blog-post">
+            <h2>Cómo obtener tu credencial de socio en 3 sencillos pasos</h2>
+            <div class="blog-meta">Publicado por Staff, 28 de Septiembre de 2024 | Categoría: Servicios</div>
+            <p class="blog-summary">Te explicamos el proceso rápido y sencillo para registrarte en línea y comenzar a disfrutar de nuestro servicio de préstamo de libros a domicilio...</p>
+            <a href="#post3" class="read-more">Leer más</a>
+        </div>
+
+        <!-- Post 4 -->
+        <div class="blog-post">
+            <h2>La figura de Juan José Arreola: un homenaje</h2>
+            <div class="blog-meta">Publicado por Ana C., 5 de Agosto de 2024 | Categoría: Cultura</div>
+            <p class="blog-summary">Un repaso a la vida y obra del escritor que da nombre a nuestra institución. Su legado en la literatura breve y su influencia en las nuevas generaciones...</p>
+            <a href="#post4" class="read-more">Leer más</a>
+        </div>
+
+        <!-- Post 5 -->
+        <div class="blog-post">
+            <h2>Club de lectura virtual: Próxima sesión y título</h2>
+            <div class="blog-meta">Publicado por Eventos, 20 de Julio de 2024 | Categoría: Eventos</div>
+            <p class="blog-summary">Únete a nuestra reunión mensual por videollamada. Este mes discutiremos "Pedro Páramo" de Juan Rulfo. Detalles y enlace de inscripción aquí...</p>
+            <a href="#post5" class="read-more">Leer más</a>
+        </div>
+        
+        <!-- Paginación -->
+        <div class="pagination">
+            <a href="#">&laquo; Anterior</a>
+            <a href="#" class="active">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">Siguiente &raquo;</a>
+        </div>
+
+    </section>
+
 </body>
 </html>

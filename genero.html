@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nosotros - Biblioteca Pública "Juan José Arreola"</title>
+    <title>Géneros - Biblioteca Pública "Juan José Arreola"</title>
     <style>
         body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f7f7f7; }
         header { background:#4a3f2f; padding:20px; color:white; display:flex; justify-content:space-between; align-items:center; }
         
+        /* --- ESTILOS DEL MENÚ DESPLEGABLE (Dropdown) --- */
         nav { display: flex; align-items: center; gap: 10px; } 
-        
-      
         .main-nav-link { 
             color: white; 
             text-decoration: none; 
@@ -19,17 +18,8 @@
             display: block;
             margin: 0 10px;
         }
-        .main-nav-link:hover { 
-            text-decoration: underline; 
-        }
-
-        
-        .dropdown {
-            position: relative; 
-            display: inline-block;
-        }
-
-        
+        .main-nav-link:hover { text-decoration: underline; }
+        .dropdown { position: relative; display: inline-block; }
         .dropdown-content {
             display: none; 
             position: absolute;
@@ -40,8 +30,6 @@
             top: 100%; 
             left: 0;
         }
-
-        
         .dropdown-content a {
             color: white;
             padding: 10px 16px;
@@ -49,57 +37,61 @@
             display: block;
             font-weight: normal; 
             white-space: nowrap; 
-            margin: 0; 
+            margin: 0;
         }
-
         .dropdown-content a:hover {
             background-color: #5d5140; 
             text-decoration: none;
         }
-
-    
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
+        .dropdown:hover .dropdown-content { display: block; }
         /* --- FIN ESTILOS MENÚ DESPLEGABLE --- */
 
-
-      
+        /* Estilos generales de la página */
         .logo { font-size:22px; font-weight:bold; }
-        section { padding:40px; max-width:900px; margin:auto; }
-        h1 { color:#4a3f2f; margin-bottom: 25px;}
-        h2 { color:#4a3f2f; border-bottom: 2px solid #ccc; padding-bottom: 5px; margin-top: 30px; }
+        section { padding:40px; max-width:900px; margin:auto; } 
+        h1 { color:#4a3f2f; margin-bottom: 30px; }
         
-      
-        .info-card {
+        /* Estilos específicos de Géneros */
+        .generos-container {
             background: white;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-left: 5px solid #4a3f2f;
-            border-radius: 4px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        .mision-vision-container {
-            display: flex;
+        .generos-container ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Columnas responsivas */
             gap: 20px;
-            margin-top: 20px;
         }
-        .mision-vision-container div {
-            flex: 1;
+        .generos-container li {
+            border: 1px solid #ccc;
+            border-left: 5px solid #4a3f2f; /* Estilo de acento */
             padding: 15px;
-            border: 1px dashed #4a3f2f;
-            background: #fdfcf9;
-            border-radius: 5px;
+            border-radius: 4px;
+            background: #fdfdfd;
         }
-        .mision-vision-container h3 {
+        .generos-container li a {
             color: #4a3f2f;
-            margin-top: 0;
+            font-weight: bold;
+            text-decoration: none;
+            display: block; /* Ocupa todo el espacio del li */
+        }
+        .generos-container li a:hover {
+            color: #5d5140;
+            text-decoration: underline;
+        }
+        .generos-container small {
+            display: block;
+            color: #888;
+            margin-top: 5px;
         }
     </style>
 </head>
 <body>
     <header>
-          <div class="logo">Biblioteca Pública "Juan José Arreola"</div>
+        <div class="logo">Biblioteca Pública "Juan José Arreola"</div>
         <nav>
             <a href="index.html" class="main-nav-link">Inicio</a>
             
@@ -143,33 +135,27 @@
         </nav>
     </header>
 
-    <section id="nosotros">
-        <h1>Acerca de la Biblioteca "Juan José Arreola"</h1>
+    <section id="generos">
+        <h1>Navegación por Género Literario</h1>
         
-        <div class="info-card">
-            <h2>Nuestra Historia</h2>
-            <p>La Biblioteca Pública "Juan José Arreola" fue fundada en 1985 con la misión de ser un faro cultural en la comunidad. Nombrada en honor al ilustre escritor mexicano, nuestra institución ha crecido hasta convertirse en un centro vital de conocimiento, aprendizaje y encuentro cívico. Desde su inauguración, hemos ampliado continuamente nuestra colección y adaptado nuestros servicios para satisfacer las necesidades de una sociedad en constante cambio.</p>
-            <p>Celebramos más de tres décadas de servicio ininterrumpido, fomentando la lectura y el acceso a la información para todas las edades.</p>
-        </div>
+        <p>Selecciona un género para ver todos los títulos disponibles en nuestra colección.</p>
 
-        <div class="mision-vision-container">
-            <div>
-                <h3>Misión</h3>
-                <p>Ofrecer acceso libre y equitativo a la información, la cultura y el conocimiento, promoviendo el desarrollo intelectual y la participación comunitaria a través de colecciones y programas de alta calidad.</p>
-            </div>
-            <div>
-                <h3>Visión</h3>
-                <p>Ser reconocida como la principal institución cultural y educativa de la región, un centro innovador que inspira el aprendizaje permanente y enriquece la vida de cada miembro de nuestra comunidad.</p>
-            </div>
+        <div class="generos-container">
+            <ul>
+                <li><a href="#ficcion">Ficción Literaria</a> <small>Novela contemporánea y clásica.</small></li>
+                <li><a href="#misterio">Misterio y Thriller</a> <small>Suspense, crímenes y detectives.</small></li>
+                <li><a href="#fantasia">Fantasía Épica</a> <small>Mundos mágicos y aventuras legendarias.</small></li>
+                <li><a href="#ciencia_ficcion">Ciencia Ficción</a> <small>Futuros distópicos y viajes espaciales.</small></li>
+                <li><a href="#romance">Romance</a> <small>Historias de amor y drama emocional.</small></li>
+                <li><a href="#poesia">Poesía</a> <small>Verso, lírica y colecciones de poemas.</small></li>
+                <li><a href="#historia">Historia</a> <small>Textos académicos y narrativa histórica.</small></li>
+                <li><a href="#biografia">Biografía y Memorias</a> <small>Vidas de personajes notables.</small></li>
+                <li><a href="#autoayuda">Autoayuda y Desarrollo</a> <small>Mejora personal y motivación.</small></li>
+                <li><a href="#tecnologia">Informática y Tecnología</a> <small>Programación, hardware y software.</small></li>
+                <li><a href="#arte">Arte y Fotografía</a> <small>Libros ilustrados y teoría artística.</small></li>
+                <li><a href="#infantil">Literatura Infantil</a> <small>Cuentos para los más pequeños.</small></li>
+            </ul>
         </div>
-
-        <h2>Nuestros Valores</h2>
-        <ul>
-            <li><strong>Inclusión:</strong> Servir a toda la comunidad sin distinción.</li>
-            <li><strong>Excelencia:</strong> Mantener la calidad en nuestros servicios y colecciones.</li>
-            <li><strong>Aprendizaje:</strong> Fomentar la curiosidad y la educación continua.</li>
-            <li><strong>Comunidad:</strong> Ser un espacio seguro y acogedor para el encuentro.</li>
-        </ul>
         
     </section>
 

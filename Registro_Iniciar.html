@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nosotros - Biblioteca Pública "Juan José Arreola"</title>
+    <title>Iniciar Sesión - Biblioteca Pública "Juan José Arreola"</title>
     <style>
         body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f7f7f7; }
         header { background:#4a3f2f; padding:20px; color:white; display:flex; justify-content:space-between; align-items:center; }
         
+        /* --- ESTILOS DEL MENÚ DESPLEGABLE (Dropdown) --- */
         nav { display: flex; align-items: center; gap: 10px; } 
-        
-      
         .main-nav-link { 
             color: white; 
             text-decoration: none; 
@@ -19,17 +18,8 @@
             display: block;
             margin: 0 10px;
         }
-        .main-nav-link:hover { 
-            text-decoration: underline; 
-        }
-
-        
-        .dropdown {
-            position: relative; 
-            display: inline-block;
-        }
-
-        
+        .main-nav-link:hover { text-decoration: underline; }
+        .dropdown { position: relative; display: inline-block; }
         .dropdown-content {
             display: none; 
             position: absolute;
@@ -40,8 +30,6 @@
             top: 100%; 
             left: 0;
         }
-
-        
         .dropdown-content a {
             color: white;
             padding: 10px 16px;
@@ -49,57 +37,74 @@
             display: block;
             font-weight: normal; 
             white-space: nowrap; 
-            margin: 0; 
+            margin: 0;
         }
-
         .dropdown-content a:hover {
             background-color: #5d5140; 
             text-decoration: none;
         }
-
-    
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
+        .dropdown:hover .dropdown-content { display: block; }
         /* --- FIN ESTILOS MENÚ DESPLEGABLE --- */
 
-
-      
+        /* Estilos generales de la página */
         .logo { font-size:22px; font-weight:bold; }
         section { padding:40px; max-width:900px; margin:auto; }
-        h1 { color:#4a3f2f; margin-bottom: 25px;}
-        h2 { color:#4a3f2f; border-bottom: 2px solid #ccc; padding-bottom: 5px; margin-top: 30px; }
-        
-      
-        .info-card {
+        h1 { color:#4a3f2f; }
+
+        /* Estilos específicos del formulario de Iniciar Sesión */
+        form {
             background: white;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-left: 5px solid #4a3f2f;
-            border-radius: 4px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-        .mision-vision-container {
-            display: flex;
-            gap: 20px;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            max-width: 450px;
             margin-top: 20px;
         }
-        .mision-vision-container div {
-            flex: 1;
-            padding: 15px;
-            border: 1px dashed #4a3f2f;
-            background: #fdfcf9;
-            border-radius: 5px;
-        }
-        .mision-vision-container h3 {
+        label {
+            font-weight: bold;
             color: #4a3f2f;
-            margin-top: 0;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="email"], input[type="password"] {
+            width: 95%; 
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button[type="submit"] {
+            background-color: #4a3f2f;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%; /* Botón ancho completo */
+        }
+        button[type="submit"]:hover {
+            background-color: #5d5140;
+        }
+        .link-alternativo {
+            display: block;
+            margin-top: 15px;
+            font-size: 0.9em;
+            text-align: center;
+        }
+        .link-alternativo a {
+            color: #4a3f2f;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .link-alternativo a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <header>
-          <div class="logo">Biblioteca Pública "Juan José Arreola"</div>
+        <div class="logo">Biblioteca Pública "Juan José Arreola"</div>
         <nav>
             <a href="index.html" class="main-nav-link">Inicio</a>
             
@@ -143,35 +148,21 @@
         </nav>
     </header>
 
-    <section id="nosotros">
-        <h1>Acerca de la Biblioteca "Juan José Arreola"</h1>
-        
-        <div class="info-card">
-            <h2>Nuestra Historia</h2>
-            <p>La Biblioteca Pública "Juan José Arreola" fue fundada en 1985 con la misión de ser un faro cultural en la comunidad. Nombrada en honor al ilustre escritor mexicano, nuestra institución ha crecido hasta convertirse en un centro vital de conocimiento, aprendizaje y encuentro cívico. Desde su inauguración, hemos ampliado continuamente nuestra colección y adaptado nuestros servicios para satisfacer las necesidades de una sociedad en constante cambio.</p>
-            <p>Celebramos más de tres décadas de servicio ininterrumpido, fomentando la lectura y el acceso a la información para todas las edades.</p>
-        </div>
-
-        <div class="mision-vision-container">
-            <div>
-                <h3>Misión</h3>
-                <p>Ofrecer acceso libre y equitativo a la información, la cultura y el conocimiento, promoviendo el desarrollo intelectual y la participación comunitaria a través de colecciones y programas de alta calidad.</p>
+    <section id="iniciar-sesion">
+        <h1>Iniciar Sesión</h1>
+        <p>Ingresa tu correo electrónico y contraseña para acceder a tu cuenta y a los servicios de la biblioteca.</p>
+        <form>
+            <label for="correo">Correo electrónico:</label>
+            <input type="email" id="correo" name="correo" required><br>
+            
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" required><br>
+            
+            <button type="submit">Iniciar Sesión</button>
+            <div class="link-alternativo">
+                ¿No tienes cuenta? <a href="Registro.html">Regístrate aquí.</a>
             </div>
-            <div>
-                <h3>Visión</h3>
-                <p>Ser reconocida como la principal institución cultural y educativa de la región, un centro innovador que inspira el aprendizaje permanente y enriquece la vida de cada miembro de nuestra comunidad.</p>
-            </div>
-        </div>
-
-        <h2>Nuestros Valores</h2>
-        <ul>
-            <li><strong>Inclusión:</strong> Servir a toda la comunidad sin distinción.</li>
-            <li><strong>Excelencia:</strong> Mantener la calidad en nuestros servicios y colecciones.</li>
-            <li><strong>Aprendizaje:</strong> Fomentar la curiosidad y la educación continua.</li>
-            <li><strong>Comunidad:</strong> Ser un espacio seguro y acogedor para el encuentro.</li>
-        </ul>
-        
+        </form>
     </section>
-
 </body>
 </html>

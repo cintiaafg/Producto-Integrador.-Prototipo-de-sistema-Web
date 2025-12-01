@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Registro - Biblioteca Pública "Juan José Arreola"</title>
+    <title>Autores - Biblioteca Pública "Juan José Arreola"</title>
     <style>
         body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f7f7f7; }
         header { background:#4a3f2f; padding:20px; color:white; display:flex; justify-content:space-between; align-items:center; }
@@ -48,56 +48,56 @@
 
         /* Estilos generales de la página */
         .logo { font-size:22px; font-weight:bold; }
-        section { padding:40px; max-width:900px; margin:auto; }
-        h1 { color:#4a3f2f; }
-
-        /* Estilos específicos del formulario de registro */
-        form {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            max-width: 450px;
+        section { padding:40px; max-width:900px; margin:auto; } 
+        h1 { color:#4a3f2f; margin-bottom: 30px; }
+        
+        /* Estilos específicos de Autores */
+        .autores-lista {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
             margin-top: 20px;
         }
-        label {
-            font-weight: bold;
-            color: #4a3f2f;
-            display: block;
-            margin-bottom: 5px;
-        }
-        input[type="text"], input[type="email"] {
-            width: 95%; 
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
+        .autor-card {
+            background: white;
+            border-left: 4px solid #4a3f2f;
+            padding: 15px;
             border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
-        button[type="submit"] {
-            background-color: #4a3f2f;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
+        .autor-card h2 {
+            margin: 0 0 5px 0;
+            font-size: 1.2em;
         }
-        button[type="submit"]:hover {
-            background-color: #5d5140;
-        }
-        .link-alternativo {
-            display: block;
-            margin-top: 15px;
-            font-size: 0.9em;
-            text-align: center;
-        }
-        .link-alternativo a {
+        .autor-card a {
             color: #4a3f2f;
             text-decoration: none;
             font-weight: bold;
+            display: block;
         }
-        .link-alternativo a:hover {
+        .autor-card a:hover {
             text-decoration: underline;
+        }
+        .autor-card small {
+            display: block;
+            color: #777;
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+        .indice-alfabetico {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .indice-alfabetico a {
+            text-decoration: none;
+            color: #4a3f2f;
+            padding: 5px 8px;
+            font-weight: bold;
+            display: inline-block;
+        }
+        .indice-alfabetico a:hover {
+            background: #eee;
+            border-radius: 4px;
         }
     </style>
 </head>
@@ -147,21 +147,58 @@
         </nav>
     </header>
 
-    <section id="registro">
-        <h1>Crear Cuenta</h1>
-        <p>Regístrate para obtener tu credencial de usuario y acceder a todos los servicios de la biblioteca.</p>
-        <form>
-            <label for="nombre">Nombre completo:</label>
-            <input type="text" id="nombre" name="nombre" required><br>
+    <section id="autores">
+        <h1>Navegación por Autor</h1>
+        
+        <p>Busca a tus escritores favoritos o descubre nuevos talentos a través de nuestro índice alfabético.</p>
+
+        <div class="indice-alfabetico">
+            <a href="#A">A</a> <a href="#B">B</a> <a href="#C">C</a> <a href="#D">D</a> 
+            <a href="#E">E</a> <a href="#F">F</a> <a href="#G">G</a> <a href="#H">H</a> 
+            <a href="#I">I</a> <a href="#J">J</a> <a href="#K">K</a> <a href="#L">L</a> 
+            <a href="#M">M</a> <a href="#N">N</a> <a href="#O">O</a> <a href="#P">P</a> 
+            <a href="#Q">Q</a> <a href="#R">R</a> <a href="#S">S</a> <a href="#T">T</a> 
+            <a href="#U">U</a> <a href="#V">V</a> <a href="#W">W</a> <a href="#X">X</a> 
+            <a href="#Y">Y</a> <a href="#Z">Z</a>
+        </div>
+        
+        <h2>Autores Destacados</h2>
+
+        <div class="autores-lista">
             
-            <label for="correo">Correo electrónico:</label>
-            <input type="email" id="correo" name="correo" required><br>
-            
-            <button type="submit">Enviar registro</button>
-            <div class="link-alternativo">
-                ¿Ya tienes una cuenta? <a href="Registro_Iniciar.html">Inicia Sesión aquí.</a>
+            <div class="autor-card">
+                <a href="#gabo">Gabriel García Márquez</a>
+                <small>Nacionalidad: Colombia | Género principal: Ficción, Realismo Mágico</small>
             </div>
-        </form>
+
+            <div class="autor-card">
+                <a href="#arreola">Juan José Arreola</a>
+                <small>Nacionalidad: México | Género principal: Cuento, Ensayo</small>
+            </div>
+
+            <div class="autor-card">
+                <a href="#austen">Jane Austen</a>
+                <small>Nacionalidad: Reino Unido | Género principal: Ficción, Romance</small>
+            </div>
+
+            <div class="autor-card">
+                <a href="#borges">Jorge Luis Borges</a>
+                <small>Nacionalidad: Argentina | Género principal: Cuento, Ensayo, Poesía</small>
+            </div>
+            
+            <div class="autor-card">
+                <a href="#orwell">George Orwell</a>
+                <small>Nacionalidad: Reino Unido | Género principal: Distopía, Sátira</small>
+            </div>
+            
+            <div class="autor-card">
+                <a href="#allende">Isabel Allende</a>
+                <small>Nacionalidad: Chile | Género principal: Novela, Ficción Histórica</small>
+            </div>
+            
+        </div>
+        
     </section>
+
 </body>
 </html>
